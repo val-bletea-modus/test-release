@@ -1,0 +1,17 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_notes:
+        description: 'Release notes (optional)'
+        required: false
+        type: string
+
+jobs:
+  release:
+    uses: val-bletea-modus/release-wf/.github/workflows/release.yml@main
+    permissions:
+      contents: write
+    with:
+      release_notes: ${{ github.event.inputs.release_notes }}
